@@ -8,7 +8,7 @@ from waitress import serve
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route(f'/{os.getenv("SECRETPATH")}', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         search_term = request.form['search_term']
