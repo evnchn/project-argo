@@ -10,12 +10,9 @@ app = Flask(__name__)
 
 @app.route(f'/{os.getenv("SECRETPATH")}', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        search_term = request.form['search_term']
-        return redirect(f'/search/{search_term}')
-    return render_template('index.html')
+    return render_template('index.html', secret_path=os.getenv("SECRETPATH"))
 
-@app.route('/search/<search_term>', methods=['GET'])
+@app.route(f'/{os.getenv("SECRETPATH")}/<search_term>', methods=['GET'])
 def search_pptx(search_term):
     output = StringIO()
 

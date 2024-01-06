@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
-<body>
-    <form method="POST" action="/">
-        <input type="text" name="search_term" placeholder="???">
-        <input type="submit" value="Search">
+  <body>
+    <form id="searchForm" onsubmit="redirectSearch(event)">
+      <input type="text" id="searchInput" placeholder="???" />
+      <button type="submit">Search</button>
     </form>
-</body>
+
+    <script>
+      function redirectSearch(event) {
+        event.preventDefault(); // Prevent form submission
+        var word = document.getElementById("searchInput").value;
+        if (word.trim() !== "") {
+          window.location.href = "/{{secret_path}}/" + encodeURIComponent(word);
+        }
+      }
+    </script>
+  </body>
 </html>
