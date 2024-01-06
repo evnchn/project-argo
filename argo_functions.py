@@ -13,7 +13,7 @@ def search_pptx_files(word, output_stream, http_mode=False, endpoint=""):
 
     word = word.lower()  # Convert the word to lowercase for case-insensitive matching
 
-    for file_path in pptx_files:
+    for file_path in sorted(pptx_files):
         presentation = Presentation(file_path)
         total_pages = len(presentation.slides)
 
