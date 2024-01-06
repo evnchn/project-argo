@@ -12,10 +12,10 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         search_term = request.form['search_term']
-        return redirect(f'/{search_term}')
+        return redirect(f'/search/{search_term}')
     return render_template('index.html')
 
-@app.route('/<search_term>', methods=['GET'])
+@app.route('/search/<search_term>', methods=['GET'])
 def search_pptx(search_term):
     output = StringIO()
 
